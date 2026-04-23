@@ -10,8 +10,8 @@ import com.xiang.ai.autoQ.exception.ErrorCode;
 import com.xiang.ai.autoQ.model.domain.User;
 import com.xiang.ai.autoQ.model.dto.user.UserQueryRequest;
 import com.xiang.ai.autoQ.model.enums.UserRoleEnum;
-import com.xiang.ai.autoQ.model.vo.user.LoginUserVO;
-import com.xiang.ai.autoQ.model.vo.user.UserVO;
+import com.xiang.ai.autoQ.model.vo.LoginUserVO;
+import com.xiang.ai.autoQ.model.vo.UserVO;
 import com.xiang.ai.autoQ.service.UserService;
 import com.xiang.ai.autoQ.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -245,7 +245,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     @Override
     public String getEncryptPassword(String userPassword) {
         // 盐值，混淆密码
-        final String SALT = "yupi";
+        final String SALT = "kunJinKao";
         return DigestUtils.md5DigestAsHex((SALT + userPassword).getBytes());
     }
 

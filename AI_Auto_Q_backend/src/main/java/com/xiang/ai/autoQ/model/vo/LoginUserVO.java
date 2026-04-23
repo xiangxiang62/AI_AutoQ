@@ -1,5 +1,6 @@
-package com.xiang.ai.autoQ.model.vo.user;
+package com.xiang.ai.autoQ.model.vo;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -7,16 +8,15 @@ import java.util.Date;
 
 
 /**
- * 用户视图
+ * 登录用户返回视图
  */
 @Data
-public class UserVO implements Serializable {
-
+public class LoginUserVO implements Serializable {
     /**
      * id
      */
     private Long id;
-    
+
     /**
      * 账号
      */
@@ -43,9 +43,25 @@ public class UserVO implements Serializable {
     private String userRole;
 
     /**
-     * 创建时间
+     * 会员过期时间
      */
-    private Date createTime;
+    private Date vipExpireTime;
 
+    /**
+     * 会员兑换码
+     */
+    private String vipCode;
+
+    /**
+     * 会员编号
+     */
+    private Long vipNumber;
+
+    /**
+     * 分享码
+     */
+    private String shareCode;
+
+    @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 }

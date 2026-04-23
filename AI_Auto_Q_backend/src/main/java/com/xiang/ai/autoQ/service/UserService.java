@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.xiang.ai.autoQ.model.domain.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xiang.ai.autoQ.model.dto.user.UserQueryRequest;
-import com.xiang.ai.autoQ.model.vo.user.LoginUserVO;
-import com.xiang.ai.autoQ.model.vo.user.UserVO;
+import com.xiang.ai.autoQ.model.vo.LoginUserVO;
+import com.xiang.ai.autoQ.model.vo.UserVO;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
