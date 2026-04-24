@@ -1,0 +1,26 @@
+{
+  "name": "ai-auto-q-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "openapi": "node openapi.config.js"
+  },
+  "dependencies": {
+    "axios": "^1.15.2",
+    "core-js": "^3.8.3",
+    "pinia": "^3.0.4",
+    "vue": "^3.2.13",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "@arco-design/web-vue": "^2.58.0",
+    "@umijs/openapi": "^1.14.1",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-typescript": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "typescript": "~5.4.5"
+  }
+}
