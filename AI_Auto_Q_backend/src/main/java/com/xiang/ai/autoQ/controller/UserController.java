@@ -136,7 +136,7 @@ public class UserController {
     }
 
     /**
-     * 分页获取用户封装列表（仅管理员）
+     * 分页获取用户封装列表
      *
      * @param userQueryRequest 查询请求参数
      */
@@ -153,6 +153,24 @@ public class UserController {
         userVOPage.setRecords(userVOList);
         return ResultUtils.success(userVOPage);
     }
+
+
+    /**
+     * 分页获取用户封装列表（仅管理员）
+     *
+     * @param userQueryRequest 查询请求参数
+     */
+    @PostMapping("/list/page/")
+    @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
+    public BaseResponse<Page<User>> listUserByPage(@RequestBody UserQueryRequest userQueryRequest) {
+        ThrowUtils.throwIf(userQueryRequest == null, ErrorCode.PARAMS_ERROR);
+        long current = userQueryRequest.getCurrent();
+        long pageSize = userQueryRequest.getPageSize();
+        Page<User> userPage = userService.page(new Page<>(current, pageSize),
+                userService.getQueryWrapper(userQueryRequest));
+        return ResultUtils.success(userPage);
+    }
+
 
 
 

@@ -1,18 +1,20 @@
+<script setup lang="ts">
+</script>
 <template>
   <div id="userLayout">
     <a-layout style="min-height: 100vh">
       <a-layout-header class="header">
         <a-space>
           <img src="../assets/logo.png" class="logo" />
-          <div>鱼答答 AI 答题应用平台</div>
+          <div>AI 答题应用平台</div>
         </a-space>
       </a-layout-header>
       <a-layout-content class="content">
         <router-view />
       </a-layout-content>
       <a-layout-footer class="footer">
-        <a href="https://www.codefather.cn" target="_blank">
-          编程导航 by 程序员鱼皮
+        <a href="https://www.github.com/xiangxiang62" target="_blank">
+           by 程序员锟斤拷
         </a>
       </a-layout-footer>
     </a-layout>

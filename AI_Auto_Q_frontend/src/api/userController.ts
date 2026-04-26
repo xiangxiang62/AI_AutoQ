@@ -70,6 +70,21 @@ export async function getUserVoByIdUsingGet(
   });
 }
 
+/** listUserByPage POST /api/user/list/page/ */
+export async function listUserByPageUsingPost(
+  body: API.UserQueryRequest,
+  options?: { [key: string]: any }
+) {
+  return request<API.BaseResponsePageUser_>("/api/user/list/page/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
 /** listUserVOByPage POST /api/user/list/page/vo */
 export async function listUserVoByPageUsingPost(
   body: API.UserQueryRequest,

@@ -1,6 +1,6 @@
 import ACCESS_ENUM from "@/access/accessEnum";
-import router from "./src/router";
-import { useLoginUserStore } from "./src/store/user";
+import router from "../router";
+import { useLoginUserStore } from "../store/userStore";
 
 /**
  * 检查权限（判断当前登录用户是否具有某个权限）

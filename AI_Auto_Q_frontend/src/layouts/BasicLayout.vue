@@ -12,8 +12,8 @@ import GlobalHeader from "@/components/GlobalHeader.vue";
         <router-view />
       </a-layout-content>
       <a-layout-footer class="footer">
-        <a href="https://www.codefather.cn" target="_blank">
-          编程导航 by 程序员锟斤拷
+        <a href="https://www.github.com/xiangxiang62" target="_blank">
+           by 程序员锟斤拷
         </a>
       </a-layout-footer>
     </a-layout>

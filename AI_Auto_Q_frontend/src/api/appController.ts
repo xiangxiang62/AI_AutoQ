@@ -2,7 +2,6 @@
 /* eslint-disable */
 import request from "@/request";
 
-
 /** addApp POST /api/app/add */
 export async function addAppUsingPost(
   body: API.AppAddRequest,

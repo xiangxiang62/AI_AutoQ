@@ -142,6 +142,12 @@ declare namespace API {
     message?: string;
   };
 
+  type BaseResponsePageUser_ = {
+    code?: number;
+    data?: PageUser_;
+    message?: string;
+  };
+
   type BaseResponsePageUserAnswer_ = {
     code?: number;
     data?: PageUserAnswer_;
@@ -288,6 +294,14 @@ declare namespace API {
     current?: number;
     pages?: number;
     records?: ScoringResultVO[];
+    size?: number;
+    total?: number;
+  };
+
+  type PageUser_ = {
+    current?: number;
+    pages?: number;
+    records?: User[];
     size?: number;
     total?: number;
   };

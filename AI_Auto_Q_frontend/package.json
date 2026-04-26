@@ -8,9 +8,13 @@
     "openapi": "node openapi.config.js"
   },
   "dependencies": {
+    "@bytemd/plugin-gfm": "^1.22.0",
+    "@bytemd/plugin-highlight": "^1.22.0",
+    "@bytemd/vue-next": "^1.22.0",
     "axios": "^1.15.2",
     "core-js": "^3.8.3",
     "pinia": "^3.0.4",
+    "qrcode": "^1.5.4",
     "vue": "^3.2.13",
     "vue-router": "^4.2.5"
   },
