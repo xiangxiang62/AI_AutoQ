@@ -131,9 +131,13 @@ const handleSubmit = async () => {
     res = await addAppUsingPost(form.value);
   }
   if (res.code === 0) {
+    console.log(res.data)
+    console.log("===============")
+    console.log(props.id)
+    console.log("===============")
     message.success("操作成功，即将跳转到应用详情页");
     setTimeout(() => {
-      router.push(`/app/detail/${props.id ?? res.data}`);
+      router.push(`/app/detail/${props.id || res.data}`);
     }, 3000);
   } else {
     message.error("操作失败，" + res.message);

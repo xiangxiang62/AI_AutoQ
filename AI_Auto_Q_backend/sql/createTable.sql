@@ -81,6 +81,7 @@ create table if not exists scoring_result
 INSERT INTO scoring_result (id, resultName, resultDesc, resultPicture, resultProp, resultScoreRange, createTime, updateTime, isDelete, appId, userId) VALUES (17, '知识大师', '你真棒棒哦，知识掌握地非常出色！', null, null, 9, '2024-04-25 15:05:44', '2024-05-09 12:28:21', 0, 2, 1);
 INSERT INTO scoring_result (id, resultName, resultDesc, resultPicture, resultProp, resultScoreRange, createTime, updateTime, isDelete, appId, userId) VALUES (18, '地理小能手！', '你对于地理知识了解得相当不错，但还有一些小地方需要加强哦！', null, null, 7, '2024-04-25 15:05:44', '2024-05-09 12:28:21', 0, 2, 1);
 INSERT INTO scoring_result (id, resultName, resultDesc, resultPicture, resultProp, resultScoreRange, createTime, updateTime, isDelete, appId, userId) VALUES (19, '继续加油！', '还需努力哦', null, null, 0, '2024-04-25 15:05:44', '2024-05-09 12:28:21', 0, 2, 1);
+INSERT INTO scoring_result (id, resultName, resultDesc, resultPicture, resultProp, resultScoreRange, createTime, updateTime, isDelete, appId, userId) VALUES (20, '继续加油！', '还需努力哦', null, null, 0, '2024-04-25 15:05:44', '2024-05-09 12:28:21', 0, 2048698474877124610, 1);
 
 -- 用户答题记录表
 create table if not exists user_answer
@@ -102,3 +103,32 @@ create table if not exists user_answer
     index idx_appId (appId),
     index idx_userId (userId)
 ) comment '用户答题记录' collate = utf8mb4_unicode_ci;
+
+
+
+INSERT INTO question (questionContent, appId, userId) VALUES
+
+-- E / I
+('[{"title":"在社交场合中，你通常：","options":[{"result":"E","score":1,"value":"主动与陌生人交谈","key":"A"},{"result":"I","score":1,"value":"更喜欢和熟人待在一起","key":"B"}]}]', 1, 1),
+
+('[{"title":"周末你更倾向于：","options":[{"result":"E","score":1,"value":"参加聚会或活动","key":"A"},{"result":"I","score":1,"value":"独处或安静休息","key":"B"}]}]', 1, 1),
+
+-- S / N
+('[{"title":"你更相信：","options":[{"result":"S","score":1,"value":"实际经验","key":"A"},{"result":"N","score":1,"value":"直觉和灵感","key":"B"}]}]', 1, 1),
+
+('[{"title":"你更喜欢：","options":[{"result":"S","score":1,"value":"具体细节","key":"A"},{"result":"N","score":1,"value":"整体概念","key":"B"}]}]', 1, 1),
+
+-- T / F
+('[{"title":"做决定时你更看重：","options":[{"result":"T","score":1,"value":"逻辑分析","key":"A"},{"result":"F","score":1,"value":"他人感受","key":"B"}]}]', 1, 1),
+
+('[{"title":"你认为更重要的是：","options":[{"result":"T","score":1,"value":"公平公正","key":"A"},{"result":"F","score":1,"value":"人情关系","key":"B"}]}]', 1, 1),
+
+-- J / P
+('[{"title":"你更喜欢：","options":[{"result":"J","score":1,"value":"提前规划好一切","key":"A"},{"result":"P","score":1,"value":"随性而为","key":"B"}]}]', 1, 1),
+
+('[{"title":"面对任务时你通常：","options":[{"result":"J","score":1,"value":"按计划执行","key":"A"},{"result":"P","score":1,"value":"临时发挥","key":"B"}]}]', 1, 1),
+
+-- 混合题（更真实一点）
+('[{"title":"你在团队中更像：","options":[{"result":"E","score":1,"value":"带动气氛的人","key":"A"},{"result":"I","score":1,"value":"默默做事的人","key":"B"}]}]', 1, 1),
+
+('[{"title":"你更倾向于：","options":[{"result":"N","score":1,"value":"思考未来可能性","key":"A"},{"result":"S","score":1,"value":"关注现实情况","key":"B"}]}]', 1, 1);

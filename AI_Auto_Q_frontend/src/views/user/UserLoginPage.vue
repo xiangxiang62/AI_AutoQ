@@ -22,7 +22,6 @@
           登录
         </a-button>
       </a-form-item>
-      <!-- 👇 新增：跳转注册 -->
       <a-form-item>
         还没有账号？
         <router-link to="/user/register">去注册</router-link>
@@ -34,38 +33,37 @@
 <script setup lang="ts">
 import { reactive } from "vue";
 import message from "@arco-design/web-vue/es/message";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { useLoginUserStore } from "@/store/userStore";
 import { userLoginUsingPost } from "@/api/userController";
 import API from "@/api";
 
-/**
- * 表单信息
- */
 const form = reactive({
   userAccount: "",
   userPassword: "",
 } as API.UserLoginRequest);
 
+const route = useRoute();
 const router = useRouter();
 const loginUserStore = useLoginUserStore();
 
-/**
- * 提交表单
- * @param data
- */
 const handleSubmit = async () => {
   const res = await userLoginUsingPost(form);
-  // 登录成功，跳转到主页
+
   if (res.code === 0) {
     await loginUserStore.fetchLoginUser();
     message.success("登录成功");
+
+    const redirect = Array.isArray(route.query.redirect)
+      ? route.query.redirect[0]
+      : route.query.redirect;
+
     router.push({
-      path: "/",
+      path: redirect ? decodeURIComponent(redirect) : "/",
       replace: true,
     });
   } else {
-    message.error("登录失败，" + res.message);
+    message.error(`登录失败：${res.message}`);
   }
 };
 </script>
