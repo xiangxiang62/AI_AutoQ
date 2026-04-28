@@ -13,9 +13,11 @@
     "@bytemd/vue-next": "^1.22.0",
     "axios": "^1.15.2",
     "core-js": "^3.8.3",
+    "echarts": "^6.0.0",
     "pinia": "^3.0.4",
     "qrcode": "^1.5.4",
     "vue": "^3.2.13",
+    "vue-echarts": "^8.0.1",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {

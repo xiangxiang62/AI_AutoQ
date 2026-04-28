@@ -36,6 +36,16 @@ declare namespace API {
     scoringStrategy?: number;
   };
 
+  type AppAnswerCountDTO = {
+    answerCount?: number;
+    appId?: number;
+  };
+
+  type AppAnswerResultCountDTO = {
+    resultCount?: string;
+    resultName?: string;
+  };
+
   type AppEditRequest = {
     appDesc?: string;
     appIcon?: string;
@@ -103,6 +113,18 @@ declare namespace API {
   type BaseResponseBoolean_ = {
     code?: number;
     data?: boolean;
+    message?: string;
+  };
+
+  type BaseResponseListAppAnswerCountDTO_ = {
+    code?: number;
+    data?: AppAnswerCountDTO[];
+    message?: string;
+  };
+
+  type BaseResponseListAppAnswerResultCountDTO_ = {
+    code?: number;
+    data?: AppAnswerResultCountDTO[];
     message?: string;
   };
 
@@ -216,6 +238,11 @@ declare namespace API {
 
   type DeleteRequest = {
     id?: number;
+  };
+
+  type getAppAnswerResultCountUsingGETParams = {
+    /** appId */
+    appId?: number;
   };
 
   type getAppVOByIdUsingGETParams = {
@@ -395,7 +422,6 @@ declare namespace API {
     createTime?: string;
     id?: number;
     questionContent?: QuestionContentDTO[];
-    serialNumber?: string;
     updateTime?: string;
     user?: UserVO;
     userId?: number;
@@ -523,7 +549,6 @@ declare namespace API {
     resultPicture?: string;
     resultScore?: number;
     scoringStrategy?: number;
-    serialNumber?: string;
     updateTime?: string;
     userId?: number;
   };
@@ -532,7 +557,6 @@ declare namespace API {
     appId?: number;
     choices?: string[];
     id?: number;
-    serialNumber?: string;
   };
 
   type UserAnswerEditRequest = {
