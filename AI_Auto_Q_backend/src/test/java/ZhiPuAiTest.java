@@ -7,6 +7,7 @@ import com.zhipu.oapi.service.v4.model.ChatMessage;
 import com.zhipu.oapi.service.v4.model.ChatMessageRole;
 import com.zhipu.oapi.service.v4.model.ModelApiResponse;
 import io.reactivex.Flowable;
+import io.reactivex.Scheduler;
 import io.reactivex.schedulers.Schedulers;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -58,4 +59,24 @@ public class ZhiPuAiTest {
         // 让主线程睡眠，以便观察输出
         Thread.sleep(10000L);
     }
+
+
+    /**
+     * 测试系统内置通用（无界队列）线程池 OOM
+     */
+    @Test
+    void testSystemScheduleOOM() {
+        Scheduler io = Schedulers.io();
+        while (true) {
+            io.scheduleDirect(() -> {
+                System.out.println(Thread.currentThread().getName() + " print hello");
+                try {
+                    Thread.sleep(50000l);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+    }
+
 }
