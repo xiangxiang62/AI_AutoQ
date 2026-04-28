@@ -1,6 +1,8 @@
 package com.xiang.ai.autoQ.controller;
 
+import cn.hutool.core.util.IdUtil;
 import cn.hutool.json.JSONUtil;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xiang.ai.autoQ.annotation.AuthCheck;
 import com.xiang.ai.autoQ.common.BaseResponse;
@@ -25,6 +27,7 @@ import com.xiang.ai.autoQ.service.UserAnswerService;
 import com.xiang.ai.autoQ.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -81,11 +84,17 @@ public class UserAnswerController {
         // 填充默认值
         User loginUser = userService.getLoginUser(request);
         userAnswer.setUserId(loginUser.getId());
-        // 写入数据库
-        boolean result = userAnswerService.save(userAnswer);
-        ThrowUtils.throwIf(!result, ErrorCode.OPERATION_ERROR);
-        // 返回新写入的数据 id
+
         long newUserAnswerId = userAnswer.getId();
+
+        // 写入数据库
+        try {
+            boolean result = userAnswerService.save(userAnswer);
+            ThrowUtils.throwIf(!result, ErrorCode.OPERATION_ERROR);
+        } catch (DuplicateKeyException e) {
+            log.error("新增用户答案失败：{}，原因：同一时间多次提交", userAnswerAddRequest);
+        }
+
         // 调用评分模块
         try {
             UserAnswer userAnswerWithResult = scoringStrategyExecutor.doScore(choices, app);
@@ -97,6 +106,7 @@ public class UserAnswerController {
         }
         return ResultUtils.success(newUserAnswerId);
     }
+
 
     /**
      * 删除用户答案
@@ -268,4 +278,15 @@ public class UserAnswerController {
     }
 
     // endregion
+
+    /**
+     * 生成 UUID
+     *
+     * @return
+     */
+    @GetMapping("/generate/id")
+    public BaseResponse<Long> generateUserAnswerId() {
+        return ResultUtils.success(IdUtil.getSnowflakeNextId());
+    }
+
 }
