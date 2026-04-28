@@ -117,6 +117,12 @@ public class QuestionController {
     }
 // endregion
 
+    /**
+     * AI 生成题目
+     *
+     * @param aiGenerateQuestionRequest
+     * @return
+     */
     @PostMapping("/ai_generate")
     public BaseResponse<List<QuestionContentDTO>> aiGenerateQuestion(@RequestBody AiGenerateQuestionRequest aiGenerateQuestionRequest) {
         ThrowUtils.throwIf(aiGenerateQuestionRequest == null, ErrorCode.PARAMS_ERROR);
